@@ -58,11 +58,11 @@ jobs:
         run: |
           git clone https://github.com/shauninman/union-${{ matrix.toolchain }}-toolchain
 
-      - name: Upload the toolchain
-        uses: docker/build-push-action@v3
-        with:
-          context: union-${{ matrix.toolchain }}-toolchain
-          file: union-${{ matrix.toolchain }}-toolchain/Dockerfile
-          tags: savant/minui-toolchain:${{ matrix.toolchain }}
-          push: true
-          platforms: linux/arm64
+      - name: Build the toolchain
+        run: |
+          docker build -t savant/minui-toolchain:${{ matrix.toolchain }} .
+        working-directory: union-${{ matrix.toolchain }}-toolchain
+
+      - name: Push the toolchain
+        run: |
+          docker push savant/minui-toolchain:${{ matrix.toolchain }}
