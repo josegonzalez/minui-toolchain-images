@@ -17,7 +17,7 @@ permissions:
 
 jobs:
   build:
-    name: build-${{ matrix.toolchain }}-${{ matrix.version }}
+    name: build-${{ matrix.toolchain }}
     runs-on: ubuntu-24.04-arm
     strategy:
       fail-fast: false
@@ -36,8 +36,6 @@ jobs:
           - tg5040
           - trimuismart # (deprecated)
           - zero28
-        version:
-          - v20250126-0
 
     steps:
       - name: Checkout
@@ -60,13 +58,12 @@ jobs:
         run: |
           git clone https://github.com/shauninman/union-${{ matrix.toolchain }}-toolchain
           cd union-${{ matrix.toolchain }}-toolchain
-          git checkout ${{ matrix.version }}
 
       - name: Upload the toolchain
         uses: docker/build-push-action@v3
         with:
           context: union-${{ matrix.toolchain }}-toolchain
           file: Dockerfile
-          tags: savant/minui-toolchain:${{ matrix.toolchain }}-${{ matrix.version }}
+          tags: savant/minui-toolchain:${{ matrix.toolchain }}
           push: true
           platforms: linux/arm64
