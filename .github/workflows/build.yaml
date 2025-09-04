@@ -58,6 +58,12 @@ jobs:
         run: |
           git clone https://github.com/shauninman/union-${{ matrix.toolchain }}-toolchain
 
+      - name: Inject a specific line to the Dockerfile after the each FROM directive
+        run: |
+          sed -i "/FROM debian:buster-slim/a\
+          RUN sed -i 's#deb.debian#archive.debian#' /etc/apt/sources.list" Dockerfile
+        working-directory: union-${{ matrix.toolchain }}-toolchain
+
       - name: Build the toolchain
         run: |
           docker build -t savant/minui-toolchain:${{ matrix.toolchain }} .
