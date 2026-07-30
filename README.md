@@ -17,7 +17,6 @@ Each tag is built from an upstream toolchain repository and published as `savant
 | rg35xxplus | shauninman/union-rg35xxplus-toolchain | |
 | rgb30 | shauninman/union-rgb30-toolchain | deprecated |
 | tg5040 | shauninman/union-tg5040-toolchain | |
-| trimuismart | shauninman/union-trimuismart-toolchain | deprecated |
 | zero28 | shauninman/union-zero28-toolchain | |
 | h700 | LoveRetro/h700-toolchain | |
 | tg5050 | LoveRetro/tg5050-toolchain | |

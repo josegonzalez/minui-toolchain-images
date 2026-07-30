@@ -34,7 +34,7 @@ jobs:
           - rgb30 # (deprecated)
           # - tg3040 now merged with tg5040, so we can't build it separately
           - tg5040
-          - trimuismart # (deprecated)
+          # - trimuismart deprecated; build fails because buster's GnuTLS can no longer negotiate TLS with buildroot.org
           - zero28
 
     steps:
