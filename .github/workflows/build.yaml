@@ -80,6 +80,7 @@ jobs:
       fail-fast: false
       matrix:
         toolchain:
+          - h700
           - tg5050
 
     steps:
