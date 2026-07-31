@@ -18,7 +18,7 @@ Each tag is built from an upstream toolchain repository and published as `savant
 | rgb30 | shauninman/union-rgb30-toolchain | deprecated |
 | tg5040 | shauninman/union-tg5040-toolchain | |
 | zero28 | shauninman/union-zero28-toolchain | |
-| h700 | LoveRetro/h700-toolchain | |
-| tg5050 | LoveRetro/tg5050-toolchain | |
+| h700 | LoveRetro/h700-toolchain | nextui build; also `h700-nextui` |
+| tg5050 | LoveRetro/tg5050-toolchain | nextui build; also `tg5050-nextui` |
 | my355-nextui | LoveRetro/my355-toolchain | nextui build of my355 |
 | tg5040-nextui | LoveRetro/tg5040-toolchain | nextui build of tg5040 |
