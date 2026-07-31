@@ -74,20 +74,18 @@ jobs:
           docker push savant/minui-toolchain:${{ matrix.toolchain }}
 
   build-loveretro:
-    name: build-${{ matrix.tag }}
+    name: build-${{ matrix.toolchain }}-nextui
     runs-on: ubuntu-24.04-arm
     strategy:
       fail-fast: false
       matrix:
         include:
           - toolchain: h700
-            tag: h700
+            alias: h700
           - toolchain: tg5050
-            tag: tg5050
+            alias: tg5050
           - toolchain: my355
-            tag: my355-nextui
           - toolchain: tg5040
-            tag: tg5040-nextui
 
     steps:
       - name: Checkout
@@ -112,9 +110,16 @@ jobs:
 
       - name: Build the toolchain
         run: |
-          docker build -t savant/minui-toolchain:${{ matrix.tag }} .
+          docker build -t savant/minui-toolchain:${{ matrix.toolchain }}-nextui .
         working-directory: ${{ matrix.toolchain }}-toolchain
 
-      - name: Push the toolchain
+      - name: Push the nextui toolchain
         run: |
-          docker push savant/minui-toolchain:${{ matrix.tag }}
+          docker push savant/minui-toolchain:${{ matrix.toolchain }}-nextui
+
+      - name: Tag and push the alias image
+        if: matrix.alias
+        run: |
+          docker tag savant/minui-toolchain:${{ matrix.toolchain }}-nextui \
+            savant/minui-toolchain:${{ matrix.alias }}
+          docker push savant/minui-toolchain:${{ matrix.alias }}
